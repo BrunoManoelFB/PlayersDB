@@ -1,0 +1,15 @@
+[
+	{
+		"name": "columns",
+		"value": "id%2Cclub_number%2Cnational_number%2Cpos%2Cname%2Cshirt_name%2Cshirt_name2%2Cclub_team%2Cleague%2Cnationality%2Cheight%2Cweight%2Cage%2Cfoot%2Coffensive_awareness%2Cball_control%2Cdribbling%2Ctight_possession%2Clow_pass%2Clofted_pass%2Cfinishing%2Cheading%2Cset_piece_taking%2Ccurl%2Cspeed%2Cacceleration%2Ckicking_power%2Cjumping%2Cphysical_contact%2Cbalance%2Cstamina%2Cdefensive_awareness%2Ctackling%2Caggression%2Cdefensive_engagement%2Cgk_awareness%2Cgk_catching%2Cgk_parrying%2Cgk_reflexes%2Cgk_reach%2Cweak_foot_usage%2Cweak_foot_accuracy%2Cform%2Cinjury_resistance%2Ccondition%2Coverall_rating%2CGK%2CCB%2CLB%2CRB%2CDMF%2CCMF%2CLMF%2CRMF%2CAMF%2CLWF%2CRWF%2CSS%2CCF%2Cplaying_style%2CS01%2CS02%2CS03%2CS04%2CS05%2CS06%2CS07%2CS08%2CS09%2CS10%2CS11%2CS12%2CS13%2CS14%2CS15%2CS16%2CS17%2CS18%2CS19%2CS20%2CS21%2CS22%2CS23%2CS24%2CS25%2CS26%2CS27%2CS28%2CS29%2CS30%2CS31%2CS32%2CS33%2CS34%2CS35%2CS36%2CS37%2CS38%2CS39%2CS40%2CS41%2CS42%2CS43%2CS44%2CS45%2CS46%2CS47%2CS48%2CS49%2CS50%2CP01%2CP02%2CP03%2CP04%2CP05%2CP06%2CP07",
+		"domain": "pesdb.net",
+		"path": "/efootball",
+		"expirationDate": 1773565615.964614,
+		"sameSite": "unspecified",
+		"storeId": "0",
+		"hostOnly": true,
+		"httpOnly": false,
+		"secure": false,
+		"session": false
+	}
+]
