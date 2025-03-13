@@ -44,7 +44,7 @@
       <a class="nav-link active" id="basic-info-tab" data-toggle="pill" href="#basic-info" role="tab">Basic</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-stats-tab" data-toggle="pill" href="#pills-stats" role="tab">Stats</a>
+      <a class="nav-link" id="pills-efstats-tab" data-toggle="pill" href="#pills-efstats" role="tab">Stats (eFootball)</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="pills-skills-tab" data-toggle="pill" href="#pills-skills" role="tab">Playing Style & Skills</a>
@@ -62,8 +62,8 @@
       </p>
     </div>
     
-    <!-- Aba Stats -->
-    <div class="tab-pane fade" id="pills-stats" role="tabpanel">
+    <!-- Aba Stats (eFootball)-->
+    <div class="tab-pane fade" id="pills-efstats" role="tabpanel">
       {% if player.overall is not none %}
         <p><strong>Overall Rating:</strong> {{ player.overall }}</p>
       {% endif %}
