@@ -14,8 +14,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Configuración inicial
 modo_prueba = False
-MAX_THREADS = 5
-DELAY_BETWEEN_REQUESTS = 0.5
+MAX_THREADS = 2
+DELAY_BETWEEN_REQUESTS = 3
 
 # Variables globales para logs
 log_nuevos = ""
@@ -85,7 +85,7 @@ def registrar_cambios_en_log(jugador_nuevo, jugador_antiguo=None):
 def valores_en_orden(jugador, headers):
     return [jugador.get(header, None) for header in headers]
 
-def procesar_pagina(pagina, url_base, cookies, session, datos_existentes, filename, headers=None):
+def procesar_pagina(pagina, url_base, cookies, session, datos_existentes, filename, headers):
     url_pagina = url_base if pagina == 1 else f"{url_base}&page={pagina}"
     html_pagina = obtener_html_pagina(url_pagina, cookies, session)
     if not html_pagina:
@@ -97,19 +97,18 @@ def procesar_pagina(pagina, url_base, cookies, session, datos_existentes, filena
     jugadores_pagina = []
 
     tablas = soup.select('table.players')
-    if not headers and tablas:  # Si no hay headers aún, extraerlos de la primera tabla
-        filas = tablas[0].find_all('tr')
-        headers = [th.get_text(strip=True) for th in filas[0].find_all('th')]
-        headers.append('LastUpdate')  # Añadir LastUpdate manualmente
-
     for tabla in tablas:
-        filas = tabla.find_all('tr')[1:]  # Saltar la fila de encabezados
+        filas = tabla.find_all('tr')[1:]  # Saltar encabezados
         for fila in filas:
             celdas = fila.find_all('td')
-            if len(celdas) < len(headers) - 1:  # -1 por LastUpdate que se añade después
+            if len(celdas) < len(headers) - 1:  # -1 por LastUpdate
+                print(f"Página {pagina}: Fila incompleta ignorada ({len(celdas)} colunas, esperado {len(headers) - 1})")
                 continue
             jugador = {headers[i]: celdas[i].get_text(strip=True) for i in range(len(celdas))}
             jugador['LastUpdate'] = last_update
+            if len(jugador) != len(headers):
+                print(f"Página {pagina}: Jogador {jugador.get('ID', 'sem ID')} incompleto, esperado {len(headers)} campos, encontrado {len(jugador)}")
+                continue
             id_jugador = jugador['ID']
             if id_jugador in datos_existentes:
                 jugador_existente = datos_existentes[id_jugador]
@@ -127,47 +126,75 @@ def procesar_pagina(pagina, url_base, cookies, session, datos_existentes, filena
                 jugadores_pagina.append(jugador)
             jugadores_local += 1
 
-    # Guardar jugadores de esta página inmediatamente
+    # Escrever em um arquivo temporário por página
     if jugadores_pagina and headers:
-        with open(filename, 'a', encoding='utf-8') as f:
+        temp_filename = f"{filename}.page_{pagina}.tmp"
+        with open(temp_filename, 'w', encoding='utf-8') as f:
             for jugador in jugadores_pagina:
                 valores = valores_en_orden(jugador, headers)
+                if len(valores) != len(headers):
+                    print(f"Página {pagina}: Erro ao salvar jogador {jugador['ID']}: tamanho inválido ({len(valores)} vs {len(headers)})")
+                    continue
                 f.write(json.dumps(valores, ensure_ascii=False) + '\n')
+        # Mesclar ao arquivo principal de forma segura
+        with open(filename, 'a', encoding='utf-8') as f_main, open(temp_filename, 'r', encoding='utf-8') as f_temp:
+            f_main.writelines(f_temp.readlines())
+        os.remove(temp_filename)
 
     return jugadores_local, last_update, jugadores_pagina, headers
 
 # Configuración inicial
-url_base = "https://pesdb.net/efootball/?mode=authentic&all=1&featured=0&sort=id&order=a"
+url_base = "https://pesdb.net/efootball/?mode=authentic&featured=0&sort=id&order=a"
 ruta_cookies = 'pesdb_cookies.json'
 cookies = cargar_cookies_desde_json(ruta_cookies)
 session = configurar_sesion()
 
 # Crear backup e inicializar el archivo
 filename = 'pesdb_players.jsonl'
-backup_filename = f"pesdb_players_bkp_{datetime.now().strftime('%Y%m%d')}.jsonl"
+backup_filename = f"bkps/pesdb_players_bkp_{datetime.now().strftime('%Y%m%d')}.jsonl"
 if os.path.exists(filename):
     print(f"Creando backup de {filename} como {backup_filename}")
     shutil.copy2(filename, backup_filename)
+
+# Limpiar el archivo existente, manteniendo apenas linhas válidas
+temp_filename = filename + '.tmp'
 datos_existentes = {}
 headers = None
-
-# Cargar datos existentes y headers si el archivo ya existe
 if os.path.exists(filename):
+    print(f"Verificando integridade de {filename}")
     with open(filename, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-        if lines and len(lines) > 1:
-            headers = json.loads(lines[0].strip())
-            for line in lines[1:]:
-                valores = json.loads(line.strip())
-                if len(valores) == len(headers):
-                    item = dict(zip(headers, valores))
-                    if 'ID' in item:
-                        datos_existentes[item['ID']] = item
+    with open(temp_filename, 'w', encoding='utf-8') as f:
+        if lines:
+            try:
+                headers = json.loads(lines[0].strip())
+                f.write(json.dumps(headers, ensure_ascii=False) + '\n')
+                print(f"Headers carregados: {headers}")
+                for i, line in enumerate(lines[1:], 2):
+                    try:
+                        valores = json.loads(line.strip())
+                        if len(valores) == len(headers):
+                            f.write(line)
+                            item = dict(zip(headers, valores))
+                            if 'ID' in item:
+                                datos_existentes[item['ID']] = item
+                        else:
+                            print(f"Linha {i} ignorada: tamanho inconsistente ({len(valores)} vs {len(headers)}): {line.strip()}")
+                    except json.JSONDecodeError as e:
+                        print(f"Linha {i} ignorada devido a erro JSON: {e} - Conteúdo: {line.strip()}")
+            except json.JSONDecodeError as e:
+                print(f"Erro ao carregar headers: {e} - Reinicializando arquivo.")
+                headers = None
+    os.replace(temp_filename, filename)
 
-# Si no hay archivo, inicializar headers en la primera página
+# Obtener la primera página para inicializar headers (se necessário) y total de páginas
+html_primera_pagina = obtener_html_pagina(url_base, cookies, session)
+if not html_primera_pagina:
+    print("No se pudo obtener la primera página. Abortando.")
+    sys.exit(1)
+
+soup = BeautifulSoup(html_primera_pagina, 'html.parser')
 if not headers:
-    html_primera_pagina = obtener_html_pagina(url_base, cookies, session)
-    soup = BeautifulSoup(html_primera_pagina, 'html.parser')
     tablas = soup.select('table.players')
     if tablas:
         filas = tablas[0].find_all('tr')
@@ -189,6 +216,7 @@ if pages_div:
 
 numeros_paginas = [int(re.search(r'page=(\d+)', a['href']).group(1)) for a in soup.select('.pages a') if re.search(r'page=(\d+)', a['href'])]
 total_paginas = max(numeros_paginas) if numeros_paginas else 1
+
 if modo_prueba:
     total_paginas = min(total_paginas, 5)
 

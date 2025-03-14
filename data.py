@@ -2,8 +2,6 @@ import json
 from collections import OrderedDict
 from datetime import datetime
 
-# --- Funções Auxiliares ---
-
 # Dicionário de países (para converter códigos do JSON2 ou outros)
 countries = {
     "1": "Afghanistan", "2": "Bahrain", "3": "Bangladesh", "4": "Bhutan",
@@ -112,184 +110,6 @@ def convert_side(value, default="right"):
             return "left"
     return default
 
-def consolidar_json(json1, json2):
-    """
-    Consolida os dados dos jogadores (players.jsonl) usando JSON2 como base e atualizando com JSON1.
-    Adiciona os campos update_at e info_id.
-    Renomeia a chave para "konamiID".
-    A saída é gerada com um cabeçalho (lista de keys) na primeira linha e, para cada jogador, apenas os valores.
-    """
-    db = {}
-    # Processa JSON2 (base oficial/licenciado)
-    for rec in json2:
-        try:
-            konami_id = int(rec.get("konamiPlID"))
-            base_id, _ = converter_id(konami_id)
-            entry = {
-                "konamiID": str(base_id),
-                "pFifaID": rec.get("pFifaID"),
-                "commentaryID": rec.get("commentaryID"),
-                "playerName": rec.get("playerName"),
-                "fakeName": None,
-                "jpPlayerName": rec.get("jpPlayerName"),
-                "fullName": rec.get("fullName"),
-                "clubShirtName": rec.get("clubShirtName"),
-                "nationalShirtName": rec.get("nationalShirtName"),
-                "nationality1": rec.get("nationality1"),
-                "nationality2": rec.get("nationality2"),
-                "age": rec.get("age"),
-                "birthdate": rec.get("birthdate"),
-                "height": rec.get("height"),
-                "weight": rec.get("weight"),
-                "strongFoot": rec.get("strongFoot"),
-                "strongHand": convert_side(rec.get("strongHand"), "right"),
-                "starRating": rec.get("starRating"),
-                "registeredPosition": rec.get("registeredPosition"),
-                "positions": rec.get("positions"),
-                "youthClub": rec.get("youthCLub"),
-                "pBeSoccerLink": rec.get("pBeSoccerLink"),
-                "update_at": None,
-                "info_id": None
-            }
-            nat = rec.get("nationality1")
-            if nat:
-                entry["nationality1"] = countries.get(str(nat), str(nat))
-            db[base_id] = entry
-        except Exception:
-            continue
-
-    # Processa JSON1 para atualizar/inserir
-    for rec in json1:
-        try:
-            rec_id = int(rec.get("ID"))
-            base_id, lic_flag = converter_id(rec_id)
-            json1_data = {
-                "age": rec.get("Age"),
-                "height": rec.get("Height"),
-                "weight": rec.get("Weight"),
-                "strongFoot": convert_side(rec.get("Foot"), "right"),
-                "registeredPosition": None,
-                "positions": None,
-                "nationality1": None
-            }
-            current_date = datetime.now().strftime("%Y-%m-%d")
-            info_id = rec.get("ID")
-            if base_id in db:
-                if lic_flag:
-                    db[base_id]["playerName"] = rec.get("Player Name")
-                    if rec.get("Shirt Name 2") and rec.get("Shirt Name 2").strip():
-                        db[base_id]["jpPlayerName"] = rec.get("Shirt Name 2")
-                    db[base_id]["clubShirtName"] = rec.get("Name Print")
-                    # Não atualiza os campos numéricos se já existir registro oficial
-                else:
-                    for key in json1_data:
-                        val = json1_data[key]
-                        if val:
-                            db[base_id][key] = val
-                    unlicensed_name = rec.get("Player Name")
-                    if unlicensed_name:
-                        if db[base_id].get("fakeName"):
-                            if unlicensed_name not in db[base_id]["fakeName"]:
-                                db[base_id]["fakeName"] += ", " + unlicensed_name
-                        else:
-                            db[base_id]["fakeName"] = unlicensed_name
-                db[base_id]["update_at"] = current_date
-                db[base_id]["info_id"] = info_id
-            else:
-                new_entry = {}
-                new_entry["konamiID"] = str(base_id)
-                if lic_flag:
-                    new_entry["playerName"] = rec.get("Player Name")
-                    new_entry["jpPlayerName"] = rec.get("Shirt Name 2")
-                    new_entry["clubShirtName"] = rec.get("Name Print")
-                    new_entry["fakeName"] = None
-                else:
-                    new_entry["playerName"] = None
-                    new_entry["jpPlayerName"] = None
-                    new_entry["clubShirtName"] = None
-                    new_entry["fakeName"] = rec.get("Player Name")
-                for key in json1_data:
-                    new_entry[key] = json1_data[key] if json1_data[key] else None
-                new_entry["pFifaID"] = None
-                new_entry["commentaryID"] = "-1"
-                new_entry["fullName"] = None
-                new_entry["nationalShirtName"] = None
-                new_entry["nationality2"] = None
-                new_entry["birthdate"] = None
-                new_entry["strongHand"] = "right"
-                new_entry["starRating"] = None
-                new_entry["youthClub"] = None
-                new_entry["pBeSoccerLink"] = None
-                new_entry["update_at"] = current_date
-                new_entry["info_id"] = info_id
-                db[base_id] = new_entry
-        except Exception:
-            continue
-
-    players_keys = ["konamiID", "pFifaID", "commentaryID", "playerName", "fakeName", "jpPlayerName",
-                    "fullName", "clubShirtName", "nationalShirtName", "nationality1", "nationality2",
-                    "age", "birthdate", "height", "weight", "strongFoot", "strongHand", "starRating",
-                    "registeredPosition", "positions", "youthClub", "pBeSoccerLink", "update_at", "info_id"]
-    ordered_players = []
-    for rec in db.values():
-        ordered_players.append([rec.get(key) for key in players_keys])
-    ordered_players = sorted(ordered_players, key=lambda r: int(r[0]))
-    return players_keys, ordered_players
-
-def gerar_ef_stats(json1):
-    stats_keys = [
-        "Offensive Awareness", "Ball Control", "Dribbling", "Tight Possession",
-        "Low Pass", "Lofted Pass", "Finishing", "Heading", "Set Piece Taking",
-        "Curl", "Speed", "Acceleration", "Kicking Power", "Jumping",
-        "Physical Contact", "Balance", "Stamina", "Defensive Awareness",
-        "Tackling", "Aggression", "Defensive Engagement", "GK Awareness",
-        "GK Catching", "GK Parrying", "GK Reflexes", "GK Reach",
-        "Weak Foot Usage", "Weak Foot Accuracy", "Form", "Injury Resistance",
-        "Overall Rating", "Playing Style"
-    ]
-    for i in range(1, 51):
-        stats_keys.append("S" + str(i).zfill(2))
-    for i in range(1, 8):
-        stats_keys.append("P" + str(i).zfill(2))
-    
-    header = ["konamiID", "update_at", "info_id"] + stats_keys
-    current_date = datetime.now().strftime("%Y-%m-%d")
-    ef_stats = []
-    for rec in json1:
-        try:
-            rec_id = int(rec.get("ID"))
-            base_id, _ = converter_id(rec_id)
-            info_id = rec.get("ID")
-            stats_values = [rec.get(key) for key in stats_keys]
-            row = [str(base_id), current_date, info_id] + stats_values
-            ef_stats.append(row)
-        except Exception:
-            continue
-    ef_stats = sorted(ef_stats, key=lambda row: int(row[0]))
-    return header, ef_stats
-
-def ler_jsonl(file_path):
-    """
-    Lê um arquivo JSONL com cabeçalho na primeira linha e retorna (header, list_of_rows).
-    Cada linha (após o cabeçalho) é convertida de JSON para uma lista.
-    """
-    with open(file_path, encoding="utf-8") as f:
-        lines = f.read().splitlines()
-    if not lines:
-        return None, []
-    header = json.loads(lines[0])
-    rows = [json.loads(line) for line in lines[1:]]
-    return header, rows
-
-def salvar_jsonl(file_path, header, rows):
-    """
-    Salva os dados no arquivo file_path com cabeçalho (primeira linha) e, em seguida, uma linha por registro.
-    """
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(json.dumps(header, ensure_ascii=False) + "\n")
-        for row in rows:
-            f.write(json.dumps(row, ensure_ascii=False) + "\n")
-
 def atualizar_players(existing_header, existing_rows, pesdb_players):
     """
     Atualiza os registros existentes (players.jsonl) com os dados do pesdb_players (estrutura JSON1).
@@ -300,12 +120,14 @@ def atualizar_players(existing_header, existing_rows, pesdb_players):
       - Se o registro for licenciado, substitui os campos (incluindo os numéricos) pelo update.
     Retorna (header, updated_rows) ordenados pela konamiID.
     """
-    # Converte os registros existentes para um dicionário indexado por konamiID (string)
     db = {}
     for row in existing_rows:
-        db[row[0]] = { key: row[i] for i, key in enumerate(existing_header) }
-    
+        db[row[0]] = {key: row[i] for i, key in enumerate(existing_header)}
+
     current_date = datetime.now().strftime("%Y-%m-%d")
+    novos_jogadores = []
+    jogadores_atualizados = []
+
     for rec in pesdb_players:
         try:
             id_val = rec.get("ID")
@@ -315,41 +137,49 @@ def atualizar_players(existing_header, existing_rows, pesdb_players):
             base_id, lic_flag = converter_id(rec_id)
             base_str = str(base_id)
             info_id = rec.get("ID")
-            # Aqui, em vez de pegar rec.get("positions"), chamamos convert_positions(rec)
             json1_data = {
                 "age": rec.get("Age"),
                 "height": rec.get("Height"),
                 "weight": rec.get("Weight"),
                 "strongFoot": convert_side(rec.get("Foot"), "right"),
                 "registeredPosition": registered_position_map.get(rec.get("Position", "").upper()) if rec.get("Position") else None,
-                "positions": convert_positions(rec),  # <== Aqui é a alteração!
+                "positions": convert_positions(rec),
                 "nationality1": rec.get("Nationality")
             }
             if base_str in db:
+                mudou = False
                 if lic_flag:
-                    # Atualiza os campos de nomes
-                    db[base_str]["playerName"] = rec.get("Player Name")
-                    db[base_str]["jpPlayerName"] = rec.get("Shirt Name 2")
-                    db[base_str]["clubShirtName"] = rec.get("Name Print")
-                    # Atualiza também os campos numéricos do update
+                    if db[base_str]["playerName"] != rec.get("Player Name"):
+                        db[base_str]["playerName"] = rec.get("Player Name")
+                        mudou = True
+                    if db[base_str]["jpPlayerName"] != rec.get("Shirt Name 2"):
+                        db[base_str]["jpPlayerName"] = rec.get("Shirt Name 2")
+                        mudou = True
+                    if db[base_str]["clubShirtName"] != rec.get("Name Print"):
+                        db[base_str]["clubShirtName"] = rec.get("Name Print")
+                        mudou = True
                     for key, val in json1_data.items():
-                        if val is not None:
+                        if val is not None and db[base_str][key] != val:
                             db[base_str][key] = val
+                            mudou = True
                 else:
-                    # Se unlicensed, atualiza os campos numéricos
                     for key, val in json1_data.items():
-                        if val is not None:
+                        if val is not None and db[base_str][key] != val:
                             db[base_str][key] = val
-                    # Acrescenta o nome unlicensed em fakeName sem sobrescrever os oficiais
+                            mudou = True
                     unlicensed_name = rec.get("Player Name")
                     if unlicensed_name:
                         if db[base_str].get("fakeName"):
                             if unlicensed_name not in db[base_str]["fakeName"]:
                                 db[base_str]["fakeName"] += ", " + unlicensed_name
+                                mudou = True
                         else:
                             db[base_str]["fakeName"] = unlicensed_name
-                db[base_str]["update_at"] = current_date
-                db[base_str]["info_id"] = info_id
+                            mudou = True
+                if mudou:
+                    db[base_str]["update_at"] = current_date
+                    db[base_str]["info_id"] = info_id
+                    jogadores_atualizados.append(f"{base_str}: {rec.get('Player Name')} ({rec.get('Team Name', 'Sem time')})")
             else:
                 new_entry = {}
                 new_entry["konamiID"] = base_str
@@ -365,7 +195,6 @@ def atualizar_players(existing_header, existing_rows, pesdb_players):
                     new_entry["fakeName"] = rec.get("Player Name")
                 for key, val in json1_data.items():
                     new_entry[key] = val if val is not None else None
-                # Campos default para os que não vêm no update
                 new_entry["pFifaID"] = None
                 new_entry["commentaryID"] = "-1"
                 new_entry["fullName"] = None
@@ -379,14 +208,14 @@ def atualizar_players(existing_header, existing_rows, pesdb_players):
                 new_entry["update_at"] = current_date
                 new_entry["info_id"] = info_id
                 db[base_str] = new_entry
+                novos_jogadores.append(f"{base_str}: {rec.get('Player Name')} ({rec.get('Team Name', 'Sem time')})")
         except Exception as e:
-            print("Erro ao atualizar registro:", e)
+            print(f"Erro ao atualizar registro do jogador com ID {rec.get('ID', 'desconhecido')}: {e}")
             continue
 
     updated_rows = [[db[k].get(key) for key in existing_header] for k in db]
     updated_rows = sorted(updated_rows, key=lambda r: int(r[0]))
-    return existing_header, updated_rows
-
+    return existing_header, updated_rows, novos_jogadores, jogadores_atualizados
 
 def atualizar_ef_stats(existing_header, existing_rows, pesdb_players):
     """
@@ -412,35 +241,71 @@ def atualizar_ef_stats(existing_header, existing_rows, pesdb_players):
     header = ["konamiID", "update_at", "info_id"] + stats_keys
     current_date = datetime.now().strftime("%Y-%m-%d")
     db_stats = {}
+    novos_stats = []
+    stats_atualizados = []
+
     for row in existing_rows:
         db_stats[row[0]] = row
+
+    print(f"Processando {len(pesdb_players)} registros do pesdb_players.jsonl para ef_stats...")
     for rec in pesdb_players:
         try:
             id_val = rec.get("ID")
             if not id_val:
+                print(f"ID ausente no registro: {rec}")
                 continue
             rec_id = int(id_val)
             base_id, _ = converter_id(rec_id)
             base_str = str(base_id)
             info_id = rec.get("ID")
-            stats_values = [rec.get(key) for key in stats_keys]
+            stats_values = []
+            for key in stats_keys:
+                value = rec.get(key)
+                if value is not None:
+                    # Converte valores numéricos para inteiros, se possível
+                    try:
+                        stats_values.append(int(value))
+                    except (ValueError, TypeError):
+                        stats_values.append(value)
+                else:
+                    stats_values.append(None)
             new_row = [base_str, current_date, info_id] + stats_values
-            db_stats[base_str] = new_row
-        except Exception:
+            if base_str in db_stats:
+                old_row = db_stats[base_str]
+                # Compara os valores das estatísticas (ignorando konamiID, update_at, info_id)
+                if old_row[3:] != new_row[3:]:
+                    print(f"Atualizando estatísticas para {base_str}: {rec.get('Player Name')}")
+                    db_stats[base_str] = new_row
+                    stats_atualizados.append(f"{base_str}: {rec.get('Player Name')} ({rec.get('Team Name', 'Sem time')})")
+                else:
+                    print(f"Estatísticas de {base_str}: {rec.get('Player Name')} não mudaram.")
+            else:
+                print(f"Adicionando novas estatísticas para {base_str}: {rec.get('Player Name')}")
+                db_stats[base_str] = new_row
+                novos_stats.append(f"{base_str}: {rec.get('Player Name')} ({rec.get('Team Name', 'Sem time')})")
+        except Exception as e:
+            print(f"Erro ao processar estatísticas do jogador com ID {rec.get('ID', 'desconhecido')}: {e}")
             continue
+
     updated_rows = list(db_stats.values())
     updated_rows = sorted(updated_rows, key=lambda r: int(r[0]))
-    return header, updated_rows
-
+    return header, updated_rows, novos_stats, stats_atualizados
 
 def ler_jsonl(file_path):
-    with open(file_path, encoding="utf-8") as f:
-        lines = f.read().splitlines()
-    if not lines:
+    try:
+        with open(file_path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+        if not lines:
+            return None, []
+        header = json.loads(lines[0])
+        rows = [json.loads(line) for line in lines[1:]]
+        return header, rows
+    except FileNotFoundError:
+        print(f"Arquivo {file_path} não encontrado. Retornando vazio.")
         return None, []
-    header = json.loads(lines[0])
-    rows = [json.loads(line) for line in lines[1:]]
-    return header, rows
+    except Exception as e:
+        print(f"Erro ao ler {file_path}: {e}")
+        return None, []
 
 def salvar_jsonl(file_path, header, rows):
     with open(file_path, "w", encoding="utf-8") as f:
@@ -453,13 +318,13 @@ if __name__ == '__main__':
     players_header, players_data = ler_jsonl("players.jsonl")
     stats_header, stats_data = ler_jsonl("ef_stats.jsonl")
     
-    # Carrega o novo arquivo de atualização
-    with open("pesdb_players.json", encoding="utf-8") as f:
-        pesdb_players = json.load(f)
+    # Carrega o novo arquivo de atualização (pesdb_players.jsonl)
+    pesdb_header, pesdb_rows = ler_jsonl("pesdb_players.jsonl")
+    pesdb_players = [dict(zip(pesdb_header, row)) for row in pesdb_rows]
     
     # Atualiza os registros
-    new_players_header, new_players_data = atualizar_players(players_header, players_data, pesdb_players)
-    new_stats_header, new_stats_data = atualizar_ef_stats(stats_header, stats_data, pesdb_players)
+    new_players_header, new_players_data, novos_jogadores, jogadores_atualizados = atualizar_players(players_header, players_data, pesdb_players)
+    new_stats_header, new_stats_data, novos_stats, stats_atualizados = atualizar_ef_stats(stats_header, stats_data, pesdb_players)
     
     # Salva os arquivos atualizados
     salvar_jsonl("players.jsonl", new_players_header, new_players_data)
@@ -467,3 +332,36 @@ if __name__ == '__main__':
     
     salvar_jsonl("ef_stats.jsonl", new_stats_header, new_stats_data)
     print("ef_stats.jsonl atualizado com sucesso!")
+    
+    # Exibe o log no terminal
+    print("\nNovos Jogadores Adicionados:")
+    print(f"Quantidade: {len(novos_jogadores)}")
+    if novos_jogadores:
+        for jogador in novos_jogadores:
+            print(f"- {jogador}")
+    else:
+        print("Nenhum novo jogador adicionado.")
+
+    print("\nJogadores Atualizados:")
+    print(f"Quantidade: {len(jogadores_atualizados)}")
+    if jogadores_atualizados:
+        for jogador in jogadores_atualizados:
+            print(f"- {jogador}")
+    else:
+        print("Nenhum jogador atualizado.")
+
+    print("\nNovas Estatísticas Adicionadas:")
+    print(f"Quantidade: {len(novos_stats)}")
+    if novos_stats:
+        for stat in novos_stats:
+            print(f"- {stat}")
+    else:
+        print("Nenhuma nova estatística adicionada.")
+
+    print("\nEstatísticas Atualizadas:")
+    print(f"Quantidade: {len(stats_atualizados)}")
+    if stats_atualizados:
+        for stat in stats_atualizados:
+            print(f"- {stat}")
+    else:
+        print("Nenhuma estatística atualizada.")

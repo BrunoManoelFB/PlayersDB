@@ -301,4 +301,4 @@ if __name__ == '__main__':
     create_tables()
     load_players()
     load_ef_stats()
-    load_teams()
+    #load_teams()
