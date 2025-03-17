@@ -39,10 +39,10 @@ if (isset($_SESSION['userID'])) {
 } else {
 		// Usuário não está logado, mostrar botões de login e registro
 		echo "<div class='container'>
-			<h2>Welcome to EditemosDB</h2>
-			<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#loginModal'>
+			<h2>Welcome to PlayersDB</h2>
+			<!--<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#loginModal'>
 				Login / Register
-			</button>
+			</button>-->
 		</div>";
 	}
 
