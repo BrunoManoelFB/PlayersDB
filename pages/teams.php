@@ -1,6 +1,6 @@
 <?php
 include '../includes/header.php';
-include '../includes/auth.php';
+//include '../includes/auth.php';
 
 $limit = 20; // Número de times por página
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;

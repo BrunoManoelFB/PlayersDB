@@ -1,6 +1,6 @@
 <?php
 include '../includes/header.php'; // Incluir cabeçalho comum
-include '../includes/auth.php';
+//include '../includes/auth.php';
 ?>
 
 <div class="container mt-5">
