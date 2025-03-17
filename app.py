@@ -7,7 +7,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Configure o Flask para servir os arquivos estáticos do JSONL Viewer
 app = Flask(__name__)
+
 
 def get_db_connection():
     return psycopg2.connect(
@@ -29,6 +31,10 @@ def load_jsonl(file_path):
         item = dict(zip(header, row))
         data.append(item)
     return data
+
+@app.route("/jsonlviewer", endpoint="jsonlviewer")
+def jsonlviewer():
+    return render_template("jsonl_viewer.php")
 
 # Filtro para converter uma string JSON para objeto
 @app.template_filter('fromjson')
@@ -143,6 +149,11 @@ position_classes = {
     11: 'position-ss',
     12: 'position-cf'
 }
+
+
+@app.route("/teditor", endpoint="teditor")
+def teditor():
+    return render_template("teditor/index.html")
 
 # Rota para listagem de jogadores (endpoint definido explicitamente)
 @app.route("/", endpoint="players")

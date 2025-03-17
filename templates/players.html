@@ -5,15 +5,17 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Player Name</th>
-        <th>Team Name(s)</th>
+        <th style="width:100px;">Konami ID</th>
+        <th style="width:100px;">FIFA ID</th>
+        <th style="width:260px;">Player Name</th>
+        <th style="width:300px;"">Team Name(s)</th>
       </tr>
     </thead>
     <tbody>
       {% for player in players %}
       <tr>
         <td>{{ player.konamiid }}</td>
+        <td>{{ player.fifaid }}</td>
         <td>
           {% set reg_pos = player.registeredposition|int if player.registeredposition is not none else None %}
           {% set pos_reg = position_names.get(reg_pos, '') %}
