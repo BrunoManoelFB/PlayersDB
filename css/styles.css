@@ -1,0 +1,69 @@
+/* Styles for player stats badges */
+
+.stat-badge {
+    display: inline-flex; /* Using flex to center vertically */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 25px; /* Fixed width for all badges */
+    height: 25px; /* Fixed height for all badges */
+    border-radius: 25%; /* Rounded borders */
+    font-weight: medium;
+    color: #000;
+    text-align: center; /* Center text alignment */
+    font-size: 14px; /* Font size */
+}
+
+/* Specific styles for each stat */
+.stat-40 {
+    background-color: red; /* Red for stats from 40 to 69 */
+}
+
+.stat-70 {
+    background-color: yellow; /* Yellow for stats from 70 to 79 */
+}
+
+.stat-80 {
+    background-color: lightgreen; /* Light green for stats from 80 to 89 */
+}
+
+.stat-90 {
+    background-color: #00CED1; /* Blue-green for stats from 90 to 99 */
+}
+
+/* Styles for player position badges */
+.position-badge {
+    display: inline-flex; /* Using flex to center vertically */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 40px; /* Fixed width for all badges */
+    height: 25px; /* Fixed height for all badges */
+    border-radius: 8%; /* Rounded borders */
+    font-weight: bold;
+    color: #fff;
+    text-align: center; /* Center text alignment */
+    font-size: 14px; /* Font size */
+}
+
+/* Specific styles for each position */
+.position-gk {
+    background-color: #f0ad4e; /* Gold for Goalkeepers */
+}
+
+.position-cb, .position-lb, .position-rb {
+    background-color: #5bc0de; /* Light blue for Defenders */
+}
+
+.position-dmf, .position-cmf, .position-lmf, .position-rmf, .position-amf {
+    background-color: #5cb85c; /* Green for Midfielders */
+}
+
+.position-ss, .position-lwf, .position-rwf, .position-cf {
+    background-color: #d9534f; /* Red for Forwards */
+}
+
+.bg-dark-red {
+    background-color: #8B0000 !important; /* Dark red background */
+}
+.bg-dark-purple {
+    background-color: #4B0082 !important; /* Dark purple background */
+}
