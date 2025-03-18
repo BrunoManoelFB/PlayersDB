@@ -384,7 +384,7 @@
                 <!--<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="../pages/players.php">Players</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="../pages/teams.php">Teams</a></li>-->
-                <li class="nav-item"><a class="nav-link" href="../pages/idconv.php/">ID Conversion</a></li>
+                <li class="nav-item"><a class="nav-link" href="../pages/convert_id.php/">ID Conversion</a></li>
                 <li class="nav-item"><a class="nav-link" href="../teditor/">TEDitor</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="../scraping/">PESDB Scraping</a></li>
                 <li class="nav-item dropdown">
@@ -406,15 +406,14 @@
             </form>
             <!-- End of Search Form -->
 
+            <!-- Login Session
             <?php if (isset($_SESSION['userID'])): ?>
-                <!-- Logout Button -->
                 <form class="form-inline my-2 my-lg-0" action="../pages/logout.php" method="POST">
                     <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
                 </form>
             <?php else: ?>
-                <!-- Login Button that opens the modal -->
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#loginModal">Login</button>
-            <?php endif; ?>
+            <?php endif; ?> -->
 
             <!-- Adicionar após o form de login -->
             <div class="theme-switch-wrapper">

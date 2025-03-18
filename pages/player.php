@@ -9,31 +9,34 @@ $position_names = [
     6 => 'LMF', 7 => 'RMF', 8 => 'AMF', 9 => 'LWF', 10 => 'RWF', 11 => 'SS', 12 => 'CF'
 ];
 
-$stat_names = [
-    'offensive_awareness', 'ball_control', 'dribbling', 'tight_possession', 'low_pass',
-    'lofted_pass', 'finishing', 'place_kicking', 'curl', 'heading', 'defensive_awareness',
-    'ball_winning', 'aggression', 'gk_awareness', 'gk_catching', 'gk_clearing',
-    'gk_reflexes', 'gk_reach', 'speed', 'acceleration', 'physical_contact', 'stamina',
-    'kicking_power', 'jump', 'form', 'injury_resistance'
-]; // Ajuste conforme os índices em ef_stats.stats
+$ef_stats = [
+    "Offensive Awareness", "Ball Control", "Dribbling", "Tight Possession",
+    "Low Pass", "Lofted Pass", "Finishing", "Heading", "Set Piece Taking",
+    "Curl", "Speed", "Acceleration", "Kicking Power", "Jumping",
+    "Physical Contact", "Balance", "Stamina", "Defensive Awareness", "Tackling",
+    "Aggression", "Defensive Engagement", "GK Awareness", "GK Catching",
+    "GK Parrying", "GK Reflexes", "GK Reach", "Weak Foot Usage",
+    "Weak Foot Accuracy", "Form", "Injury Resistance"
+];
 
-$skill_names = [
-    'scissors_feint', 'double_touch', 'flip_flap', 'marseille_turn', 'sombrero',
-    'crossover_turn', 'cut_behind_turn', 'scotch_move', 'step_on_skill_control',
-    'heading_skill', 'long_range_drive', 'long_range_shooting', 'knuckle_shot',
-    'dipping_shot', 'rising_shots', 'acrobatic_finishing', 'heel_trick', 'first_time_shot',
-    'one_touch_pass', 'weighted_pass', 'pinpoint_crossing', 'outside_curler',
-    'rabona', 'no_look_pass', 'low_lofted_pass', 'gk_low_punt', 'gk_high_punt',
-    'long_throw', 'gk_long_throw', 'penalty_specialist', 'gk_penalty_saver',
-    'gamesmanship', 'track_back', 'super_sub', 'fighting_spirit'
-]; // Ajuste conforme ef_stats.skills
+$ef_skills = [
+    "Scissors Feint", "Double Touch", "Flip Flap", "Marseille Turn", "Sombrero",
+    "Chop Turn", "Cut Behind & Turn", "Scotch Move", "Sole Control", "Momentum Dribbling",
+    "Heading", "Long-Range Curler", "Chip Shot Control", "Knuckle Shot", "Dipping Shot",
+    "Rising Shot", "Long Range Shooting", "Acrobatic Finishing", "Heel Trick", "First-time Shot",
+    "Phenomenal Finishing", "One-touch Pass", "Through Passing", "Weighted Pass", "Pinpoint Crossing",
+    "Edged Crossing", "Outside Curler", "Rabona", "No Look Pass", "Game-changing Pass",
+    "Visionary Pass", "Low Lofted Pass", "GK Low Punt", "GK High Punt", "Long Throw", "GK Long Throw",
+    "Penalty Specialist", "GK Penalty Saver", "Gamesmanship", "Man Marking", "Track Back",
+    "Interception", "Blocker", "Aerial Superiority", "Sliding Tackle", "Fortress", "Acrobatic Clearance",
+    "Captaincy", "Super-sub", "Fighting Spirit"
 
-$pStyles_names = [
-    'Goal Poacher', 'Fox in the Box', 'Target Man', 'Creative Playmaker', 'Prolific Winger',
-    'Roaming Flanker', 'Cross Specialist', 'Orchestrator', 'Anchor Man', 'Build Up',
-    'Offensive Full-back', 'Defensive Full-back', 'The Destroyer', 'Extra Frontman',
-    'Offensive Goalkeeper', 'Defensive Goalkeeper'
-]; // Ajuste conforme ef_stats.playing_style
+];
+
+$ef_styles = [
+    "Trickster", "Mazing Run", "Speeding Bullet", "Incisive Run", "Long Ball Expert", 
+    "Early Cross", "Long Ranger"
+];
 ?>
 
 <div class="container mt-5">
@@ -151,7 +154,6 @@ $pStyles_names = [
                     echo '<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item"><a class="nav-link active" id="basic-info-tab" data-toggle="pill" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic</a></li>
                         <li class="nav-item"><a class="nav-link" id="pills-stats-tab" data-toggle="pill" href="#pills-stats" role="tab" aria-controls="pills-stats" aria-selected="false">Stats</a></li>
-                        <li class="nav-item"><a class="nav-link" id="pills-skills-tab" data-toggle="pill" href="#pills-skills" role="tab" aria-controls="pills-skills" aria-selected="false">Playing Style & Skills</a></li>
                     </ul>';
 
                     echo '<div class="tab-content" id="pills-tabContent">';
@@ -173,6 +175,11 @@ $pStyles_names = [
 
                     // Aba Stats
                     echo "<div class='tab-pane fade' id='pills-stats' role='tabpanel' aria-labelledby='pills-stats-tab'>";
+                    echo    "<select class='form-control' name='stats' id='stats'>
+                                <option value='efootball'>eFootball</option>
+                                <option value='pes2021'>PES 2021</option>
+                                <option value='fifa'>FIFA/EA FC</option>
+                            </select>";
                     if ($stats) {
                         $stats_data = json_decode($stats['stats'], true);
                         if (isset($stats_data) && is_array($stats_data)) {
@@ -189,10 +196,6 @@ $pStyles_names = [
                     } else {
                         echo "No stat records found for this player.";
                     }
-                    echo "</div>";
-
-                    // Aba Playing Style & Skills
-                    echo "<div class='tab-pane fade' id='pills-skills' role='tabpanel' aria-labelledby='pills-skills-tab'>";
                     if ($stats) {
                         $skills_data = json_decode($stats['skills'], true);
                         if (isset($skills_data) && is_array($skills_data)) {
@@ -219,6 +222,7 @@ $pStyles_names = [
                     }
                     echo "</div>";
 
+                    
                     echo "</div>"; // Fecha tab-content
                     echo "</div>"; // Fecha profile
                 } else {

@@ -1,63 +1,75 @@
 <?php
-include '../includes/header.php'; // Incluir cabeçalho comum
-//include '../includes/auth_ADM.php';
-//include '../includes/auth.php';
-?>
+include '../includes/db_connection.php'; // Conexão com o banco
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <?php
-            // Definir o mapeamento de números de posição para nomes
-            $position_names = [
-                0 => 'GK', 1 => 'CB', 2 => 'LB', 3 => 'RB', 4 => 'DMF', 5 => 'CMF',
-                6 => 'LMF', 7 => 'RMF', 8 => 'AMF', 9 => 'LWF', 10 => 'RWF', 11 => 'SS', 12 => 'CF'
-            ];
-			
-			
-			// Função para obter a classe do badge
-			function getBadgeClass($value) {
-				// Certificar que o valor é um número
-				$value = (int)$value;
+if (isset($_POST['id'])) {
+    $input_id = (int)$_POST['id'];
+    $converted_id = null;
+    $afccl_id = null;
+    $message = '<br>';
+    $btns = '';
 
-				if ($value >= 40 && $value <= 69) {
-					return 'stat-40';
-				} elseif ($value >= 70 && $value <= 79) {
-					return 'stat-70';
-				} elseif ($value >= 80 && $value <= 89) {
-					return 'stat-80';
-				} elseif ($value >= 90 && $value <= 99) {
-					return 'stat-90';
-				} else {
-					return '';
-				}
-			}
-			?>
-			
-			<div class="form-group">
-				<label for="inputID">Insert Player ID to be converted:</label>
-				<input type="number" class="form-control" id="inputID" min="1" required onkeydown="if(event.key === 'Enter') { convertID(); }">			</div>
-			<button type="button" class="btn btn-primary" onclick="convertID()">Convert</button>
+    if ($input_id > 1074003968) {
+        $converted_id = $input_id - 1074003968;
+        $message .= "Unlicensed AFC Champions League (PES 2021) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 1073741824) {
+        $converted_id = $input_id - 1073741824;
+        $message .= "Licensed AFC Champions League (PES 2021) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 75497472) {
+        $converted_id = $input_id - 75497472;
+        $message .= "Unlicensed NT (?) (eFootball) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 67108864) {
+        $converted_id = $input_id - 67108864;
+        $message .= "Licensed (?) (eFootball) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 58720256) {
+        $converted_id = $input_id - 58720256;
+        $message .= "Unlicensed AFC Asian Cup (eFootball) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 50331648) {
+        $converted_id = $input_id - 50331648;
+        $message .= "Licensed AFC Asian Cup (eFootball) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 25165824) {
+        $converted_id = $input_id - 25165824;
+        $message .= "Unlicensed AFC Champions League (eFootball) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 16777216) {
+        $converted_id = $input_id - 16777216;
+        $message .= "Licensed AFC Champions League (eFootball) ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 8388608) {
+        $converted_id = $input_id - 8388608;
+        $message .= "Unlicensed eFootball ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id > 262144) {
+        $converted_id = $input_id - 262144;
+        $message .= "Unlicensed PES 2021 ID.<br>Its base ID is $converted_id.";
+    } elseif ($input_id < 262144) {
+        $converted_id = $input_id;
+        $message .= "It's a Licensed PES 2021 ID.<br>Base ID: $converted_id.";
+    } else {
+        $message .= "Invalid ID. Please enter a valid player ID.";
+    }
 
-			<div id="result"></div> <!-- Div para mostrar o resultado da conversão -->
+    if ($converted_id !== null) {
+        $stmt = $conn->prepare("SELECT playerID, konamiPlID, playerName FROM Players WHERE konamiPlID = ?");
+        if ($stmt) {
+            $stmt->bind_param("i", $converted_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
 			
-			
-			
-			<script>
-			function convertID() {
-				var id = document.getElementById('inputID').value;
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById('result').innerHTML = this.responseText;
-					}
-				};
-				xhttp.open("POST", "convert_id.php", true);
-				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send("id=" + id);
-			}
-			</script>
+			$afccl = 1073741824 + $converted_id;
 
-<?php
-include '../includes/footer.php'; // Incluir rodapé comum
+            if ($result && $result->num_rows > 0) {
+                $player = $result->fetch_assoc();
+                $message .= "<br>Player found: <a href='player.php?id={$player['playerID']}'>{$player['playerName']}</a>.";
+            } else {
+                $message .= "<br><small>ID conversion based on <a href='https://evoweb.uk/threads/06-11-22-team-player-manager-competition-country-boot-glove-stadium-derby-city-ids-breakdown-lists-ef-pes-id-converter-v5-0b.78377/'>NFS_FM studies</a>.</small>";
+            }
+            $stmt->close();
+
+            $btns  = "<br><button type='button' class='btn btn-primary' onclick='navigator.clipboard.writeText(\"$converted_id\")'>Copy Base ID</button>";
+            $btns .= "<button type='button' class='btn btn-primary' onclick='navigator.clipboard.writeText(\"$afccl\")'>Copy AFC Champions League ID</button><br>";
+        } else {
+            $message .= "<br>Error preparing SQL statement.";
+        }
+    }
+
+    echo $message;
+    echo $btns;
+}
 ?>
