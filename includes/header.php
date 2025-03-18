@@ -91,6 +91,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlayersDB</title>
     
@@ -101,7 +102,146 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 	
-    
+    <!-- Link para a fonte Roboto do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Estilos para o switch de tema */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .theme-icon {
+            margin-left: 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        /* Estilos para os temas claro/escuro */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-mode .navbar {
+            background-color: #444 !important;
+        }
+
+        body.dark-mode .navbar-brand,
+        body.dark-mode .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        body.dark-mode .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        body.dark-mode .footer {
+            background-color: #444 !important;
+            color: #ccc;
+        }
+
+        /* Ajustes para tabelas */
+        body.light-mode .table {
+        color: #333;
+        background-color: #fff;
+        }
+        body.dark-mode .table {
+        color: #fff;
+        background-color: #444;
+        }
+        body.dark-mode .table th,
+        body.dark-mode .table td {
+        border-color: #666;
+        }
+        body.dark-mode .table .thead-light th {
+        background-color: #555;
+        color: #fff;
+        }
+        /* Ajustes para paginação */
+        body.light-mode .page-link {
+        color: #007bff;
+        background-color: #fff;
+        border-color: #dee2e6;
+        }
+        body.light-mode .page-item.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        }
+        body.dark-mode .page-link {
+        color: #66b0ff;
+        background-color: #555;
+        border-color: #777;
+        }
+        body.dark-mode .page-item.active .page-link {
+        background-color: #66b0ff;
+        border-color: #66b0ff;
+        color: #fff;
+        }
+        body.dark-mode .page-link:hover {
+        background-color: #666;
+        color: #fff;
+        }
+    </style>
     <style>
         .stat-badge {
             display: inline-flex; /* Using flex to center vertically */
@@ -191,6 +331,8 @@
 		.btn {
 			margin: 2px;
 		}
+
+        
 	</style>
 
     <style>
@@ -231,14 +373,9 @@
     // Check if the user is logged in and set the navbar color
     $navbarColor = isset($_SESSION['userID']) ? (isset($_SESSION['adminRights']) && $_SESSION['adminRights'] == 1 ? 'bg-dark-purple' : 'bg-dark-red') : 'bg-light';
 
-    // If the user is not logged in and is not on index.php, redirect to index.php
-    if (!isset($_SESSION['userID']) && basename($_SERVER['PHP_SELF']) != 'index.php') {
-        header('Location: ../index.php');
-        exit();
-    }
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="../pages/index.php">PlayersDB</a>
+        <a class="navbar-brand" href="../pages/index.php"><strong>PlayersDB</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -246,9 +383,10 @@
             <ul class="navbar-nav">
                 <!--<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="../pages/players.php">Players</a></li>
-                <li class="nav-item"><a class="nav-link" href="../pages/teams.php">Teams</a></li>
-                <li class="nav-item"><a class="nav-link" href="../scraping/">PESDB Scraping</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="../pages/teams.php">Teams</a></li>-->
+                <li class="nav-item"><a class="nav-link" href="../pages/idconv.php/">ID Conversion</a></li>
                 <li class="nav-item"><a class="nav-link" href="../teditor/">TEDitor</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="../scraping/">PESDB Scraping</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Tools
@@ -256,7 +394,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="../pages/idconv.php">ID Converter</a>
                     </div>
-                </li>
+                </li>-->
                 <!--<li class="nav-item"><a class="nav-link" href="../admin/coaches_list.php">Coaches</a></li>
                 <li class="nav-item"><a class="nav-link" href="../admin/competitions_list.php">Competitions</a></li>-->
             </ul>
@@ -277,6 +415,15 @@
                 <!-- Login Button that opens the modal -->
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#loginModal">Login</button>
             <?php endif; ?>
+
+            <!-- Adicionar após o form de login -->
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <i class="fa-solid fa-sun theme-icon"></i>
+            </div>
         </div>
     </nav>
 
@@ -307,3 +454,32 @@
             </div>
         </div>
     </div>
+    <script>
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const themeIcon = document.querySelector('.theme-icon');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Aplicar tema salvo
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            toggleSwitch.checked = true;
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        // Alternar tema
+        toggleSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
