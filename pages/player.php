@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
-include '../includes/header.php'; // Incluir cabeçalho comum
+include __DIR__ . '/../includes/header.php';
 //include '../includes/auth.php';
 
 // Arrays de mapeamento (ajuste conforme necessário)
@@ -180,6 +180,9 @@ $ef_styles = [
                                 <option value='pes2021'>PES 2021</option>
                                 <option value='fifa'>FIFA/EA FC</option>
                             </select>";
+                    
+                    echo "<br>";
+
                     if ($stats) {
                         $stats_data = json_decode($stats['stats'], true);
                         if (isset($stats_data) && is_array($stats_data)) {
@@ -196,6 +199,7 @@ $ef_styles = [
                     } else {
                         echo "No stat records found for this player.";
                     }
+                    echo "<br><br>";
                     if ($stats) {
                         $skills_data = json_decode($stats['skills'], true);
                         if (isset($skills_data) && is_array($skills_data)) {
@@ -237,6 +241,7 @@ $ef_styles = [
 </div>
 
 <?php
-include '../includes/footer.php'; // Incluir rodapé comum
+include __DIR__ . '/../includes/footer.php';
+
 echo "<head><title>" . ($player['playerName'] ?? 'Player') . " | PlayersDB</title></head>";
 ?>

@@ -1,5 +1,5 @@
 <?php 
-    include '../includes/db_connection.php'; 
+    include __DIR__ . '/db_connection.php';
 
     session_start(); // Start the session at the beginning of the file
 
@@ -95,15 +95,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlayersDB</title>
     
+    <!-- Inclua o Bootstrap e o jQuery (versão completa) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpQ6mXJkl8//1kMb2mkEY5nxLIbblBuBwn5Z1JNf9kF71UXm3p+Y9/+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-	
-    <!-- Link para a fonte Roboto do Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jQuery completo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper e Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 
     <style>
 
@@ -375,17 +377,18 @@
 
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="../pages/index.php"><strong>PlayersDB</strong></a>
+        <a class="navbar-brand" href="/"><strong>PlayersDB</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <!--<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>-->
-                <li class="nav-item"><a class="nav-link" href="../pages/players.php">Players</a></li>
+                <li class="nav-item"><a class="nav-link" href="/players">Players</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="../pages/teams.php">Teams</a></li>-->
-                <li class="nav-item"><a class="nav-link" href="../pages/convert_id.php/">ID Conversion</a></li>
-                <li class="nav-item"><a class="nav-link" href="../teditor/">TEDitor</a></li>
+                <li class="nav-item"><a class="nav-link" href="/convert_id">ID Conversion</a></li>
+                <li class="nav-item"><a class="nav-link" href="/convert_stats">Stats Conversion</a></li>
+                <li class="nav-item"><a class="nav-link" href="/teditor">TEDitor</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="../scraping/">PESDB Scraping</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

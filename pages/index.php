@@ -1,4 +1,8 @@
-<?php include('../includes/header.php'); ?>
+<?php 
+
+include __DIR__ . '/../includes/header.php';
+
+?>
 
 <style>
     body {
@@ -46,5 +50,5 @@ if (isset($_SESSION['userID'])) {
 		</div>";
 	}
 
-include('../includes/footer.php');
-?>
+    include __DIR__ . '/../includes/footer.php';
+    ?>

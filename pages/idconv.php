@@ -1,11 +1,12 @@
 <?php
-include '../includes/db_connection.php'; // Conexão com o banco
+// idconv.php – NÃO inclua header.php nem footer.php aqui!
+include __DIR__ . '/../includes/db_connection.php';
 
 if (isset($_POST['id'])) {
     $input_id = (int)$_POST['id'];
     $converted_id = null;
     $afccl_id = null;
-    $message = '<br>';
+    $message = '';
     $btns = '';
 
     if ($input_id > 1074003968) {
@@ -46,30 +47,30 @@ if (isset($_POST['id'])) {
     }
 
     if ($converted_id !== null) {
-        $stmt = $conn->prepare("SELECT playerID, konamiPlID, playerName FROM Players WHERE konamiPlID = ?");
+        $stmt = $conn->prepare("SELECT id, konamiID, playerName FROM players WHERE konamiid = ?");
         if ($stmt) {
             $stmt->bind_param("i", $converted_id);
             $stmt->execute();
             $result = $stmt->get_result();
-			
-			$afccl = 1073741824 + $converted_id;
+
+            $afccl = 1073741824 + $converted_id;
 
             if ($result && $result->num_rows > 0) {
                 $player = $result->fetch_assoc();
-                $message .= "<br>Player found: <a href='player.php?id={$player['playerID']}'>{$player['playerName']}</a>.";
+                $message .= "<br>Player found: <a href='player.php?id={$player['id']}'>{$player['playerName']}</a>.";
             } else {
-                $message .= "<br><small>ID conversion based on <a href='https://evoweb.uk/threads/06-11-22-team-player-manager-competition-country-boot-glove-stadium-derby-city-ids-breakdown-lists-ef-pes-id-converter-v5-0b.78377/'>NFS_FM studies</a>.</small>";
+                $message .= "<br>No players found for that ID.";
             }
             $stmt->close();
 
-            $btns  = "<br><button type='button' class='btn btn-primary' onclick='navigator.clipboard.writeText(\"$converted_id\")'>Copy Base ID</button>";
+            $message .= "<br><small>ID conversion based on <a href='https://evoweb.uk/threads/78377/'>NFS_FM IDs breakdown</a>.</small>";
+            $btns  = "<br><br><button type='button' class='btn btn-primary' onclick='navigator.clipboard.writeText(\"$converted_id\")'>Copy Base ID</button>";
             $btns .= "<button type='button' class='btn btn-primary' onclick='navigator.clipboard.writeText(\"$afccl\")'>Copy AFC Champions League ID</button><br>";
         } else {
             $message .= "<br>Error preparing SQL statement.";
         }
     }
 
-    echo $message;
-    echo $btns;
+    echo $message . $btns;
 }
 ?>

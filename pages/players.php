@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
-include '../includes/header.php';
+include __DIR__ . '/../includes/header.php';
 //include '../includes/auth.php';
 
 // Array de nomes de posições (ajuste conforme necessário)
@@ -78,24 +78,35 @@ $result = $conn->query($sql);
     </table>
 
     <!-- Paginação -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <?php if ($page > 1): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a></li>
-            <?php endif; ?>
-            <?php
-            $start_page = max(1, $page - 7);
-            $end_page = min($total_pages, $page + 7);
-            for ($i = $start_page; $i <= $end_page; $i++): ?>
-                <li class="page-item <?= $i == $page ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-            <?php endfor; ?>
-            <?php if ($page < $total_pages): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?= $page + 1 ?>">Next</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
+    <div class="text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <?php if ($page > 1): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a>
+                    </li>
+                <?php endif; ?>
+                <?php
+                $start_page = max(1, $page - 7);
+                $end_page = min($total_pages, $page + 7);
+                for ($i = $start_page; $i <= $end_page; $i++): ?>
+                    <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                    </li>
+                <?php endfor; ?>
+                <?php if ($page < $total_pages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?= $page + 1 ?>">Next</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+            <div>
+                <span>(<?= $total_players ?> players found)</span>
+            </div>
+        </nav>
+    </div>
 </div>
 
 <?php
-include '../includes/footer.php';
+include __DIR__ . '/../includes/footer.php';
 ?>

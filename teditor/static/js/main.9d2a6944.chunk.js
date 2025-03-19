@@ -6237,7 +6237,7 @@ var countriesMapping = (function(){
                 }), " for more details."]
             }), Object(B.jsx)("div", {
                 className: b.a.version,
-                children: "experimental-20250223-epversion"
+                children: "experimental-20250223-modified"
             })]
         })
     }
@@ -6676,7 +6676,7 @@ var countriesMapping = (function(){
             className: Q.a.MenuBar,
             children: [Object(B.jsxs)("div", {
                 className: Q.a.fileName,
-                children: [t.fileA && t.fileA.info && t.fileA.info.fileName, " ", t.fileA && t.fileA.info && "(".concat(X(t.fileA.info), ") | "), "TEditor - Editemos PES Edition"]
+                children: [t.fileA && t.fileA.info && t.fileA.info.fileName, " ", t.fileA && t.fileA.info && "(".concat(X(t.fileA.info), ") | "), "TEditor - Modified"]
             }), Object(B.jsx)("div", {
                 className: Q.a.fileBar,
                 children: Object(B.jsxs)("div", {
