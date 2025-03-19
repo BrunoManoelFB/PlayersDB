@@ -6646,7 +6646,7 @@ var countriesMapping = (function(){
                       onClick: this._handle2020UnmaskedSave,
                       children: "Save as PES2020 (unmasked, for .TED Editor)"
                     })
-                  }),
+                  })/*,
                   Object(B.jsx)(W, {
                     content: "Use this button to save if you are Bruno or Hau.",
                     children: Object(B.jsx)(E, {
@@ -6656,7 +6656,7 @@ var countriesMapping = (function(){
                       onClick: this._handleJsonSave,
                       children: "Save as JSON"
                     })
-                  })
+                  })*/
                 ]
               });
             }

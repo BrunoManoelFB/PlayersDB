@@ -388,7 +388,7 @@
                 <!--<li class="nav-item"><a class="nav-link" href="../pages/teams.php">Teams</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="/convert_id">ID Conversion</a></li>
                 <li class="nav-item"><a class="nav-link" href="/convert_stats">Stats Conversion</a></li>
-                <li class="nav-item"><a class="nav-link" href="/teditor">TEDitor</a></li>
+                <li class="nav-item"><a class="nav-link" href="/teditor">TEDitor (modified)</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="../scraping/">PESDB Scraping</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
