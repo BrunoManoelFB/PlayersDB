@@ -145,13 +145,13 @@ def procesar_pagina(pagina, url_base, cookies, session, datos_existentes, filena
 
 # Configuración inicial
 url_base = "https://pesdb.net/efootball/?mode=authentic&featured=0&sort=id&order=a"
-ruta_cookies = 'pesdb_cookies.json'
+ruta_cookies = 'scraping/pesdb_cookies.json'
 cookies = cargar_cookies_desde_json(ruta_cookies)
 session = configurar_sesion()
 
 # Crear backup e inicializar el archivo
-filename = 'pesdb_players.jsonl'
-backup_filename = f"bkps/pesdb_players_bkp_{datetime.now().strftime('%Y%m%d')}.jsonl"
+filename = 'scraping/pesdb_players.jsonl'
+backup_filename = f"scraping/bkps/pesdb_players_bkp_{datetime.now().strftime('%Y%m%d')}.jsonl"
 if os.path.exists(filename):
     print(f"Creando backup de {filename} como {backup_filename}")
     shutil.copy2(filename, backup_filename)
@@ -245,7 +245,7 @@ with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
             print(f"Error en la página {pagina}: {e}")
 
 # Guardar metadatos
-metadata_filename = 'pesdb_metadata.json'
+metadata_filename = 'scraping/pesdb_metadata.json'
 with open(metadata_filename, 'w', encoding='utf-8') as f:
     json.dump({"dbLastUpdate": datetime.now().strftime('%Y-%m-%d'), "pesdbData": last_update_global}, f, ensure_ascii=False, indent=4)
 

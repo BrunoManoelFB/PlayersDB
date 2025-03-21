@@ -80,6 +80,7 @@ def create_tables():
     );
     """)
 
+    ''' ----------------------------------------------------- tabela teams
     cur.execute("DROP TABLE IF EXISTS teams;")
     cur.execute("""
     CREATE TABLE teams (
@@ -106,6 +107,7 @@ def create_tables():
         legend VARCHAR(255)
     );
     """)
+    '''
 
     conn.commit()
     cur.close()
@@ -126,7 +128,7 @@ def convert_side_value(value):
 
 def load_players():
     print("Carregando players.jsonl...")
-    df_players = jsonl_to_dataframe("players.jsonl")
+    df_players = jsonl_to_dataframe("scraping/players.jsonl")
     
     df_players["konamiID"] = df_players["konamiID"].astype(str)
     df_players["strongFoot"] = df_players["strongFoot"].apply(convert_side_value)
@@ -183,7 +185,7 @@ def load_players():
 
 def load_ef_stats():
     print("Carregando ef_stats.jsonl...")
-    df_stats = jsonl_to_dataframe("ef_stats.jsonl")
+    df_stats = jsonl_to_dataframe("scraping/ef_stats.jsonl")
     if df_stats.empty:
         print("Nenhum dado encontrado em ef_stats.jsonl")
         return
@@ -228,7 +230,7 @@ def load_ef_stats():
 
 def load_teams():
     print("Carregando teams.jsonl...")
-    df_teams = jsonl_to_dataframe("teams.jsonl")
+    df_teams = jsonl_to_dataframe("scraping/teams.jsonl")
     
     if df_teams.empty:
         print("Nenhum dado encontrado em teams.jsonl")
@@ -293,4 +295,4 @@ if __name__ == '__main__':
     create_tables()
     load_players()
     load_ef_stats()
-    load_teams()
+    # load_teams() --só será necessário se houver atualização nos dados de times

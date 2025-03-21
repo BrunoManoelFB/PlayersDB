@@ -1,0 +1,728 @@
+######20/03/2025######
+Última Actualización del sitio: 2025-03-20
+
+***Jugadores Actualizados:***
+37403: Yann M'Vila
+- Player Name: Yann M'vila → Yann M'Vila
+
+47457: Reis
+- Squad Number: 17 → 90
+
+48072: Harold Reina
+- Squad Number: 30 → 32
+
+60531: Enric Saborit
+- Squad Number:  → 31
+- Team Name: Free Agents → Iquique A
+- League: Free Agent → Chilean League
+
+60583: Nicolás Vargas
+- Squad Number:  → 31
+- Team Name: Free Agents → Talcahuano AN
+- League: Free Agent → Chilean League
+
+60761: Erik Lima
+- Squad Number: 11 → 27
+- Team Name: FC Machida Zelvia → Vissel Kobe
+
+60817: César Pinares
+- Squad Number:  → 30
+- Team Name: Free Agents → Limache R
+- League: Free Agent → Chilean League
+
+61470: Rafael Pérez
+- Squad Number: 33 → 2
+- Team Name: Barranquilla RB → Magdalena RA
+
+101796: Charlie Adams
+- Squad Number: 6 → 34
+- Team Name: Las Vegas Lights FC → Colorado Springs FC
+
+107590: Marko Dugandžić
+- Squad Number: 32 → 45
+
+109605: David Murillo
+- Squad Number: 4 → 26
+
+110143: Joel Graterol
+- Squad Number: 39 → 1
+
+114161: James Murphy
+- Squad Number: 38 → 5
+
+114833: Matías Moya
+- Squad Number: 26 → 29
+- Team Name: CSD Colo-Colo → Iquique A
+
+115432: Kim Han-Gil
+- Squad Number: 22 → 47
+
+115809: Mehdi Chahiri
+- Squad Number: 99 → 11
+
+120287: Ray Vanegas
+- Squad Number: 37 → 11
+
+120516: Tobias Salquist
+- Squad Number: 32 → 3
+
+121608: Kota Yamada
+- Squad Number: 14 → 76
+- Team Name: Gamba Osaka → Yokohama FC
+
+123852: Cristian Baldovino
+- Squad Number: 23 → 33
+
+126073: Luciano Pons
+- Squad Number: 31 → 27
+
+126160: Cammy MacPherson
+- Squad Number: 32 → 5
+- Team Name: St. Johnstone FC → Tampa Bay Rowdies
+- League: Scottish Premiership → USL Championship
+
+126601: Matías Romero
+- Squad Number:  → 8
+- Team Name: Free Agents → Miami FC
+- League: Free Agent → USL Championship
+
+127157: Reice Charles-Cook
+- Squad Number: 39 → 23
+
+127975: Matheuzinho
+- Player Name: Matheus França → Matheuzinho
+
+128571: Ricardo Márquez
+- Squad Number: 31 → 21
+
+128878: Johan Campaña
+- Squad Number: 35 → 29
+
+130060: Pedro Raul
+- Player Name: Pedro Raúl → Pedro Raul
+
+133260: Gustav Isaksen
+- Foot: Right foot → Left foot
+
+135898: Santiago Orozco
+- Squad Number: 19 → 6
+
+136993: Kwon Sung-Yun
+- Squad Number: 27 → 45
+
+137647: Jordan Adebayo-Smith
+- Team Name: Minnesota GB → Detroit City FC
+- League: American League → USL Championship
+
+141434: Deian Verón
+- Squad Number:  → 11
+- Team Name: Free Agents → Miami FC
+- League: Free Agent → USL Championship
+
+142501: Ben Mines
+- Squad Number:  → 20
+- Team Name: Free Agents → Loudoun United FC
+- League: Free Agent → USL Championship
+
+142546: Jimmy Medranda
+- Squad Number:  → 94
+- Team Name: Free Agents → San Antonio FC
+- League: Free Agent → USL Championship
+
+142573: Amadou Dia
+- Squad Number:  → 13
+- Team Name: Free Agents → Louisville City FC
+- League: Free Agent → USL Championship
+
+144334: Aedan Stanley
+- Squad Number: 3 → 16
+
+144349: Hunter Sulte
+- Squad Number: 40 → 98
+
+144389: Edward Kizza
+- Squad Number: 35 → 19
+
+144803: Chituru Odunze
+- Squad Number: 26 → 1
+- Team Name: Charlotte BBGW → Hartford Athletic
+- League: American League → USL Championship
+
+147414: Dewar Victoria
+- Squad Number:  → 8
+- Team Name: Free Agents → Bogotá AB
+- League: Free Agent → Colombian League
+
+148287: Christian Sorto
+- Squad Number:  → 99
+- Team Name: Free Agents → Loudoun United FC
+- League: Free Agent → USL Championship
+
+148292: Elvis Amoh
+- Squad Number: 34 → 22
+
+148381: Sergio Rivas
+- Squad Number:  → 7
+- Team Name: Free Agents → New Mexico United
+- League: Free Agent → USL Championship
+
+148403: Ronaldo Damus
+- Squad Number:  → 9
+- Team Name: Free Agents → Birmingham Legion FC
+- League: Free Agent → USL Championship
+
+148430: Johnny Rodriguez
+- Squad Number: 30 → 14
+- Team Name: Oakland Roots SC → Las Vegas Lights FC
+
+148248: Roberto Molina
+- Squad Number:  → 15
+- Team Name: Free Agents → Orange County SC
+- League: Free Agent → USL Championship
+
+148258: Patrick Hogan
+- Squad Number: 36 → 3
+
+148592: Serge Ngoma
+- Squad Number: 30 → 81
+
+148463: Thomas Amang
+- Squad Number:  → 23
+- Team Name: Free Agents → New Mexico United
+- League: Free Agent → USL Championship
+
+148531: Dani Rovira
+- Squad Number: 35 → 2
+
+148538: Louis Perez
+- Squad Number:  → 13
+- Team Name: Free Agents → North Carolina FC
+- League: Free Agent → USL Championship
+
+148561: William Reilly
+- Squad Number: 31 → 28
+
+148702: Trevor Spangenberg
+- Squad Number:  → 18
+- Team Name: Free Agents → Birmingham Legion FC
+- League: Free Agent → USL Championship
+
+148741: Nick Ross
+- Squad Number:  → 19
+- Team Name: Free Agents → Sacramento Republic FC
+- League: Free Agent → USL Championship
+
+148774: Dayonn Harris
+- Squad Number: 31 → 5
+
+148780: Sebastián Guenzatti
+- Squad Number:  → 23
+- Team Name: Free Agents → Detroit City FC
+- League: Free Agent → USL Championship
+
+148856: Grant Stoneman
+- Squad Number: 34 → 5
+
+151238: Jhon Meléndez
+- Squad Number: 5 → 30
+
+152062: Daniel Polanco
+- Squad Number: 22 → 2
+
+152700: Alexandre Stanić
+- Squad Number:  → 67
+- Team Name: Free Agents → Charleroi ZW
+- League: Free Agent → Belgian League
+
+152712: Samuel Careaga
+- Squad Number: 5 → 10
+- Team Name: Memphis 901 FC → Hartford Athletic
+
+152757: Gonzalo Siri Payer
+- Squad Number: 12 → 1
+
+152794: Julian Bravo
+- Squad Number: 31 → 3
+
+152864: Will Meyer
+- Squad Number: 33 → 99
+
+153005: Josep Mejia
+- Squad Number: 33 → 39
+
+153183: Joaquín Soto
+- Squad Number:  → 29
+- Team Name: Free Agents → La Calera R
+- League: Free Agent → Chilean League
+
+153253: Maxi Rodriguez
+- Squad Number: 31 → 21
+
+153263: Morey Doner
+- Squad Number:  → 33
+- Team Name: Free Agents → Detroit City FC
+- League: Free Agent → USL Championship
+
+153293: Raul Vazquez
+- Squad Number:  → 66
+- Team Name: Free Agents → El Paso Locomotive FC
+- League: Free Agent → USL Championship
+
+154185: Froilán Díaz
+- Squad Number: 30 → 44
+
+154251: Ignacio Sáez
+- Squad Number: 32 → 35
+
+154808: Park In-Hyeok
+- Squad Number: 18 → 9
+
+155536: Francisco Bonfiglio
+- Squad Number:  → 9
+- Team Name: Free Agents → Miami FC
+- League: Free Agent → USL Championship
+
+157210: Gustavo Klismahn
+- Team Name: CD Santa Clara → Vissel Kobe
+- League: Liga Portugal Betclic → MEIJI YASUDA J1 LEAGUE
+
+157308: Christian Pinzón
+- Squad Number:  → 11
+- Team Name: Free Agents → Las Vegas Lights FC
+- League: Free Agent → USL Championship
+
+159089: Deyson Copete
+- Squad Number: 5 → 33
+
+159156: Mayer Gil
+- Squad Number: 26 → 99
+
+159264: Saliou Mandiang
+- Squad Number: 34 → 36
+
+160402: Aldair Sanchez
+- Squad Number: 32 → 3
+
+160515: Ben Martino
+- Squad Number:  → 67
+- Team Name: Free Agents → Pittsburgh Riverhounds
+- League: Free Agent → USL Championship
+
+160723: Javier Mena
+- Squad Number: 17 → 43
+
+160769: Kaan Akyazı
+- Squad Number: 38 → 19
+
+160814: Thomas Camier
+- Squad Number:  → 50
+- Team Name: Free Agents → Oakland Roots SC
+- League: Free Agent → USL Championship
+
+160585: Martín Hiriart
+- Squad Number: 39 → 31
+- Team Name: Santiago BAR → La Calera R
+
+160588: Martín Contreras
+- Squad Number: 40 → 24
+
+160631: Samir Mayo
+- Squad Number: 18 → 16
+
+160680: Ashish Chattha
+- Squad Number:  → 15
+- Team Name: Free Agents → Las Vegas Lights FC
+- League: Free Agent → USL Championship
+
+160877: Agustín Mangiaut
+- Squad Number: 1 → 32
+
+160899: Santiago Londoño
+- Squad Number: 19 → 42
+
+160976: Santino Vera
+- Squad Number:  → 29
+- Team Name: Free Agents → Avellaneda AB
+- League: Free Agent → Argentine League
+
+161095: Illal Osumanu
+- Squad Number:  → 28
+- Team Name: Free Agents → Pittsburgh Riverhounds
+- League: Free Agent → USL Championship
+
+161958: Anders Pedersen
+- Squad Number: 33 → 28
+
+162158: Jhoan Hernández
+- Squad Number:  → 38
+- Team Name: Free Agents → Bogotá AB
+- League: Free Agent → Colombian League
+
+162714: Jhon Quiñónes
+- Squad Number: 35 → 4
+
+165234: Luis Saldana
+- Squad Number:  → 48
+- Team Name: Free Agents → Oakland Roots SC
+- League: Free Agent → USL Championship
+
+165842: Neiser Villareal
+- Squad Number: 88 → 40
+
+166276: Lee Ji-Sol
+- Player Name: Lee Zi-Sol → Lee Ji-Sol
+
+166277: Kim Jin-Ho
+- Squad Number: 23 → 27
+
+166368: Byeon Jun-Soo
+- Squad Number: 5 → 15
+
+166387: Lee Kang-Hyun
+- Squad Number: 8 → 24
+
+166395: Roh Hee-Dong
+- Squad Number: 12 → 31
+
+166530: Dagoberto Espinoza
+- Squad Number: 34 → 127
+
+167928: Jin Si-Woo
+- Squad Number: 20 → 5
+
+168480: Cristián Palma
+- Squad Number:  → 33
+- Team Name: Free Agents → Viña del Mar AA
+- League: Free Agent → Chilean League
+
+168481: Lukas Cifuentes
+- Squad Number:  → 34
+- Team Name: Free Agents → Viña del Mar AA
+- League: Free Agent → Chilean League
+
+168493: Igor Serrote
+- Player Name: Igor Schlemper → Igor Serrote
+
+168712: Jimmy Farkarlun
+- Squad Number: 35 → 26
+
+168730: Emmanuel Samadia
+- Squad Number:  → 19
+- Team Name: Free Agents → Hartford Athletic
+- League: Free Agent → USL Championship
+
+168628: Bryan Dowd
+- Squad Number: 39 → 31
+- Team Name: Chicago RW → FC Tulsa
+- League: American League → USL Championship
+
+168776: Logan Neidlinger
+- Squad Number: 37 → 17
+
+168780: Shaft Brewer Jr.
+- Squad Number:  → 28
+- Team Name: Free Agents → Las Vegas Lights FC
+- League: Free Agent → USL Championship
+
+169006: Hugo Bacharach
+- Squad Number: 36 → 4
+
+169112: Brayan Campáz
+- Squad Number:  → 37
+- Team Name: Free Agents → Bogotá AB
+- League: Free Agent → Colombian League
+
+169142: Diego Porcel
+- Squad Number:  → 31
+- Team Name: Free Agents → La Paternal RB
+- League: Free Agent → Argentine League
+
+169193: Brandon Gongora
+- Squad Number:  → 50
+- Team Name: Free Agents → San Antonio FC
+- League: Free Agent → USL Championship
+
+169214: Axel Valdivia
+- Squad Number:  → 50
+- Team Name: Free Agents → El Paso Locomotive FC
+- League: Free Agent → USL Championship
+
+169300: Ali Elmasnaouy
+- Squad Number:  → 45
+- Team Name: Free Agents → Oakland Roots SC
+- League: Free Agent → USL Championship
+
+169301: Tomás Caminos
+- Squad Number:  → 49
+- Team Name: Free Agents → Oakland Roots SC
+- League: Free Agent → USL Championship
+
+169348: Juan Quiceno
+- Squad Number: 24 → 36
+
+169434: Matías Villa
+- Squad Number: 41 → 1
+
+169443: Julio Martinez
+- Squad Number:  → 47
+- Team Name: Free Agents → Oakland Roots SC
+- League: Free Agent → USL Championship
+
+169471: Finn Sundstrom
+- Squad Number:  → 66
+- Team Name: Free Agents → North Carolina FC
+- League: Free Agent → USL Championship
+
+169683: Shummei Horikane
+- Player Name: Shunmei Horikane → Shummei Horikane
+
+169698: Pablo Linzoain
+- Squad Number:  → 70
+- Team Name: Free Agents → Pittsburgh Riverhounds
+- League: Free Agent → USL Championship
+
+169856: Brandon Quiñonez
+- Squad Number: 39 → 31
+
+170409: Braxton Montgomery
+- Squad Number:  → 34
+- Team Name: Free Agents → Phoenix Rising FC
+- League: Free Agent → USL Championship
+
+170647: Darío Denis
+- Squad Number: 12 → 23
+
+170830: Omar Mohamedhoesein
+- Squad Number: 34 → 27
+
+170855: Felipe Bussio
+- Squad Number:  → 45
+- Team Name: Free Agents → Liniers AB
+- League: Free Agent → Argentine League
+
+170887: Mate Šimičić
+- Squad Number: 33 → 34
+
+170897: Tiemen De Bel
+- Squad Number: 95 → 94
+
+171575: Cyrus Kowell
+- Squad Number:  → 38
+- Team Name: Free Agents → Phoenix Rising FC
+- League: Free Agent → USL Championship
+
+172281: Endri Mustali
+- Squad Number:  → 21
+- Team Name: Free Agents → Tampa Bay Rowdies
+- League: Free Agent → USL Championship
+
+172508: Crew Hartlage
+- Squad Number:  → 92
+- Team Name: Free Agents → Louisville City FC
+- League: Free Agent → USL Championship
+
+172511: Kauan Ribeiro
+- Squad Number:  → 28
+- Team Name: Free Agents → Hartford Athletic
+- League: Free Agent → USL Championship
+
+172641: Cristian Guzmán
+- Squad Number: 37 → 35
+
+173064: Kyllian Antonio
+- Squad Number: 33 → 32
+
+173009: Joaquín Ruíz
+- Squad Number:  → 53
+- Team Name: Free Agents → CA Boca Juniors
+- League: Free Agent → Argentine League
+
+173122: Amine Moussaoui
+- Squad Number: 33 → 34
+
+173123: Marius Louãr
+- Squad Number: 32 → 33
+
+173155: Ro-Zangelo Daal
+- Squad Number: 27 → 37
+
+173170: Ntji Tounkara
+- Squad Number: 31 → 36
+
+173305: Sebastián Quiñones
+- Squad Number:  → 36
+- Team Name: Free Agents → Cali R
+- League: Free Agent → Colombian League
+
+173544: A. Faurand-Tournaire
+- Squad Number: 34 → 31
+
+173548: Ibrahim Raache
+- Squad Number: 35 → 32
+
+173560: Ilies Abdelkrim
+- Squad Number: 36 → 40
+
+173925: Steeven Assengue
+- Squad Number: 34 → 33
+
+173984: Alexis Sinisterra
+- Squad Number: 47 → 50
+
+174157: Hervé Boua Dié
+- Squad Number: 32 → 37
+
+174169: Robin Bouw
+- Squad Number: 31 → 36
+
+174327: Kilyan Veniere
+- Squad Number: 32 → 35
+
+174548: Kang Hui-Su
+- Squad Number: 21 → 42
+
+174549: Lee Jae-Hwan
+- Squad Number: 15 → 12
+
+174550: Kim Dong-Hwa
+- Squad Number: 31 → 34
+
+174614: Santiago Cantillo
+- Squad Number: 36 → 29
+
+174615: Oscar Vega
+- Squad Number: 7 → 30
+
+174699: Ronald Valencia
+- Squad Number: 16 → 24
+
+174764: J. Eliécer Martínez
+- Squad Number: 32 → 44
+
+174881: Kaly
+- Squad Number: 31 → 23
+
+175450: Kleber Díaz
+- Squad Number: 40 → 9
+
+175616: Cole Dewhurst
+- Squad Number: 30 → 16
+
+175578: Bruno Rendón
+- Squad Number: 43 → 27
+
+175579: Oliver Brynéus
+- Squad Number: 44 → 21
+
+175767: Kenneth Hoban
+- Squad Number: 34 → 29
+
+
+***Nuevos Jugadores:***
+45667: Ángelo Henríquez (La Serena R)
+59353: Darío Melo (Santiago BAR)
+61029: Francesco Celeste (Miami FC)
+112514: Ihsan Sacko (Phoenix Rising FC)
+119845: Diego Mercado (Miami FC)
+128010: Marcel Scalese (Ehime FC)
+135270: Tobías Zárate (Miami FC)
+136932: Kevin Angulo (Cali R)
+140221: Daniel Barden (Norwich YG)
+140279: Fabián Sánchez (Avellaneda AB)
+145847: Rayan Djédjé (Sacramento Republic FC)
+154322: Dallas Odle (Monterey Bay F.C.)
+155709: Patrick Leal (Las Vegas Lights FC)
+157941: Christopher Pearson (Las Vegas Lights FC)
+158635: Pablo Arriaza (Málaga AB)
+159321: Hugo Félix (SL Benfica)
+160460: Nicolás Garrido (Santiago RA)
+161031: Mouhamadou War (Orange County SC)
+162047: Anton Søjberg (Monterey Bay F.C.)
+162083: Ethan Pendleton (Loudoun United FC)
+164849: Dermot Mee (Manchester United)
+165305: Rodrigo Duarte (Vitória SC)
+165698: Fernando Aguirre (Orange County SC)
+165811: Cleverson Murillo (Bogotá VB)
+166181: Joshua Beecher (Cardiff B)
+167180: Samy Chouchane (Brighton WB)
+167733: Benjamin Fredrick (Brentford RW)
+168835: Kosei Suwama (Yokohama F. Marinos)
+169113: Luis Marimón (Bogotá AB)
+169177: Jhoan Merino (Avellaneda AB)
+170355: Rory O'Driscoll (Las Vegas Lights FC)
+170981: Daniele Quieto (Internazionale Milano)
+172198: Adriel (CD Santa Clara)
+174302: Ollie Dewsbury (Bristol R)
+174142: Berkay Muratoğlu (Kasımpaşa SK)
+175864: Genesis Antwi (Chelsea B)
+175865: Owen Eames (Derby WB)
+175867: Alan Brítez (La Calera R)
+175868: Alan Paredes (Viña del Mar AA)
+175869: Martín Ramírez (Viña del Mar AA)
+175871: Lukas Urriola (Viña del Mar AA)
+175872: Amaro Leon (Viña del Mar AA)
+175876: Jose Hernandez (Viña del Mar AA)
+175879: Vicente Cabrera (Santiago RA)
+175880: Ange Tia (Stade de Reims)
+175882: Ereku Temitayo (Birmingham Legion FC)
+175883: Roman Torres (Birmingham Legion FC)
+175884: Ryan Jack (Loudoun United FC)
+175885: Junior Moreira (Hartford Athletic)
+175886: Adewale Obalola (Hartford Athletic)
+175887: Sebastian Mora-Mora (El Paso Locomotive FC)
+175888: A. Caracheo Luna (Oakland Roots SC)
+175889: Giorgio Costantini (CA River Plate)
+175890: W. Ndollo Bille (Montpellier Hérault SC)
+175891: Foly Amegatse (Amiens SC)
+175892: Juan Esteban Ramírez (Pereira AR)
+175893: Ramiro Morales (Pasto RAA)
+175894: Isaac James (FC Lorient)
+175895: Pablo Barea (Cádiz AA)
+175896: Kai Jansen (SC Heerenveen)
+175897: Cristian Vázquez (Miami FC)
+175898: Tobias Mas (Miami FC)
+175899: Rafael Martell (Miami FC)
+175900: Bohdan Isachenko (Granada RB)
+175901: Tiago Parente (GD Estoril Praia)
+175902: Adrián Verde (Valladolid MB)
+175903: Amadou Coundoul (Gijón RB)
+175904: Souleymane Sagnan (RC Lens)
+175905: George Evans (Millwall BW)
+175906: Daniel Namani (San Antonio FC)
+175907: Sebastian Seiterle (San Antonio FC)
+175908: Lucio Berrón (San Antonio FC)
+175909: Tom Taylor (Ipswich BW)
+175910: Woody Williamson (Ipswich BW)
+175912: Clément Darribère (Pau FC)
+175913: Brandon Powell (Blackburn BW)
+175914: Sebastian Alzate (Manizales B)
+175915: Rafael Acuña (Manizales B)
+175916: Tetsuya Kadono (Orange County SC)
+175917: Daniel Garcia (Orange County SC)
+175918: Mateo Acuña (Liniers AB)
+175919: Ignacio Gómez (Liniers AB)
+175922: Carver Miller (Las Vegas Lights FC)
+175923: Sacha Lung (RC Strasbourg Alsace)
+175924: Adam Larsson (Monterey Bay F.C.)
+175925: Wesley Fonguck (Monterey Bay F.C.)
+175926: Jacob Muir (Monterey Bay F.C.)
+175929: Mathis Raimbault (Stade Lavallois MFC)
+175931: Jayson Quintanilla (North Carolina FC)
+175932: Zachary DaSilva (Phoenix Rising FC)
+175933: Anthony C. Hernandez (Phoenix Rising FC)
+175934: Jan Villegas (Phoenix Rising FC)
+175935: Pierce Rizzo (Phoenix Rising FC)
+175936: Diego Martín (Las Palmas AA)
+175937: Emanuel Londoño (Envigado N)
+175938: Jon Burke (Colorado Springs FC)
+175939: Jason Bouregy (Pittsburgh Riverhounds)
+175940: Max Broughton (Pittsburgh Riverhounds)
+175941: Jorge Garcia (Pittsburgh Riverhounds)
+175942: Nicolò Scarpa (A.S. Cittadella)
+175943: Giorgi Kavelashvili (Saint-Gilles BG)
+175944: Rúben Furtado (Sporting Braga)
+175945: Afonso Patrão (Sporting Braga)
+175946: Haruki Yamazaki (Detroit City FC)
+175947: Darren Smith (Detroit City FC)
+175948: Marcello Polisi (Detroit City FC)
+175949: Rika (Vitória SC)

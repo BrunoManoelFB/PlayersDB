@@ -1,0 +1,10 @@
+ID 3: GameVersion FC 25 → FIFA 11, LastUpdate 2025-03-18 → 2011-02-22
+ID 2: GameVersion FC 25 → FIFA 16, LastUpdate 2025-03-18 → 2016-09-22
+ID 6: GameVersion FC 25 → FIFA 12, LastUpdate 2025-03-18 → 2012-02-22
+ID 10: GameVersion FC 25 → FIFA 14, LastUpdate 2025-03-18 → 2014-01-10
+ID 11: GameVersion FC 25 → FIFA 15, LastUpdate 2025-03-18 → 2015-09-10
+ID 16: GameVersion FC 25 → FIFA 19, LastUpdate 2025-03-18 → 2019-09-11
+ID 28: GameVersion FC 25 → FIFA 18, LastUpdate 2025-03-18 → 2018-09-12
+ID 27: GameVersion FC 25 → FIFA 16, LastUpdate 2025-03-18 → 2016-09-22
+ID 40: GameVersion FC 25 → FIFA 17, LastUpdate 2025-03-18 → 2016-08-25
+ID 41: GameVersion FC 25 → FIFA 22, LastUpdate 2025-03-18 → 2022-08-18

@@ -291,20 +291,6 @@ def rewrite_file_from_existing_data(filename, headers, existing_data):
 
 if __name__ == "__main__":
     base_links = [
-        "https://sofifa.com/players?type=history&wk%5B0%5D=1&col=pi&sort=asc", # LINKS COM TODOS OS JOGADORES
-        "https://sofifa.com/players?type=history&sk%5B%5D=0&wk%5B%5D=2&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=1&wk%5B%5D=2&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=2&wk%5B%5D=2&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=3&wk%5B%5D=2&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=4&wk%5B%5D=2&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=0&wk%5B%5D=3&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&pn%5B%5D=0&pn%5B%5D=2&pn%5B%5D=3&pn%5B%5D=5&pn%5B%5D=7&sk%5B%5D=1&wk%5B%5D=3",
-        "https://sofifa.com/players?type=history&pn%5B%5D=8&pn%5B%5D=10&pn%5B%5D=12&pn%5B%5D=14&pn%5B%5D=16&pn%5B%5D=18&pn%5B%5D=20&pn%5B%5D=21&pn%5B%5D=22&pn%5B%5D=23&pn%5B%5D=25&pn%5B%5D=27&sk%5B%5D=1&wk%5B%5D=3",
-        "https://sofifa.com/players?type=history&sk%5B%5D=2&wk%5B%5D=3&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=3&wk%5B%5D=3&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&sk%5B%5D=4&wk%5B%5D=3&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&wk%5B0%5D=4&col=pi&sort=asc",
-        "https://sofifa.com/players?type=history&wk%5B0%5D=5&col=pi&sort=asc",
         "https://sofifa.com/players?type=all&col=pi&sort=asc" # LINK COM OS JOGADORES ATRELADOS A UM CLUBE
     ]
 
